@@ -1,9 +1,11 @@
-ponto_a=(2,2)
-ponto_b=(4,4)
-x=(ponto_a[0]+ponto_b[0])/2
-y=(ponto_a[1]+ponto_b[1])/2
-medio_ab=(x,y)
-print(medio_ab)
+a_point=(2,2)
+b_point=(4,4)
+
+x_avarege=(a_point[0]+b_point[0])/2
+y_avarege=(a_point[1]+b_point[1])/2
+
+ab_point=(x_avarege,y_avarege)
+print(ab_avarege_point)
 
 # Tarefa : Encontrar o ponto medio da reta
 

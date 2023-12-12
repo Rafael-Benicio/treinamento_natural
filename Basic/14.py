@@ -1,42 +1,49 @@
 import math
 import functools 
+from datetime import date
 
-d1=(2014, 7, 2)
-d2=(2014, 7, 2)
+date_1=(2014, 7, 2)
+date_2=(2014, 7, 5)
+
+# Usando datetime
+
+days_dif = date(2014, 7, 5) - date(2014, 7, 2)
+
+print(days_dif)
 
 # Aqui basicamente checa se a dt2 é posterior a dt1
-def check_dt(d1,d2):
-     if d1[0]>d2[0] or d1[0]==d2[0] and d1[1]>d2[1] or d1[0]==d2[0] and d1[1]<=d2[1] and d1[2]>d2[2]:
-          print("Não é possivel")
-          exit()
+# def check_dt(date_1,date_2):
+#      if date_1[0]>date_2[0] or date_1[0]==date_2[0] and date_1[1]>date_2[1] or date_1[0]==date_2[0] and date_1[1]<=date_2[1] and date_1[2]>date_2[2]:
+#           print("Não é possivel")
+#           exit()
 
-def diff_days(d1,d2):
-     n_dias=0
-     ANO=365
-     # Quantos dias tem cada mês
-     MES=[31,28,31,30,31,30,31,31,30,31,30,31]
-     # Calcular a diferença entre os dias
-     if d1[2]<=d2[2]:
-          n_dias+=d2[2]-d1[2]
-     elif d1[2]>d2[2]:
-          d1_mes=MES[d1[1]-1]-d1[2]
-          n_dias+=d1_mes+d2[2]
-     # Calcular a diferença em dias dos meses
-     if d1[1]<=d2[1] and d1[2]<=d2[2]:
-          n_dias+=functools.reduce(lambda x, y: x + y, MES[(d1[1]-1):(d2[1]-1)],0)
-     elif d1[1]>d2[1]:
-          n_dias+=ANO-functools.reduce(lambda x, y: x + y, MES[(d2[1]-1):(d1[1]-1)],0)
-     # Calcular a diferença em dias dos anos
-     if d1[0]>d2[0] and d1[1]>d2[1] or d1[0]>d2[0] and d1[2]>d2[2]:
-          n_dias+=((d2[0]-1)-d1[0])*ANO
-          print(n_dias)
-     elif d1[0]<=d2[0]:
-          n_dias+=(d2[0]-d1[0])*ANO
+# def diff_days(date_1,date_2):
+#      n_days=0
+#      YEAR=365
+#      # Quantos dias tem cada mês
+#      MONTH=[31,28,31,30,31,30,31,31,30,31,30,31]
+#      # Calcular a diferença entre os dias
+#      if date_1[2]<=date_2[2]:
+#           n_days+=date_2[2]-date_1[2]
+#      elif date_1[2]>date_2[2]:
+#           date_1_mes=MONTH[date_1[1]-1]-date_1[2]
+#           n_days+=date_1_mes+date_2[2]
+#      # Calcular a diferença em dias dos meses
+#      if date_1[1]<=date_2[1] and date_1[2]<=date_2[2]:
+#           n_days+=functools.reduce(lambda x, y: x + y, MONTH[(date_1[1]-1):(date_2[1]-1)],0)
+#      elif date_1[1]>date_2[1]:
+#           n_days+=YEAR-functools.reduce(lambda x, y: x + y, MONTH[(date_2[1]-1):(date_1[1]-1)],0)
+#      # Calcular a diferença em dias dos YEARs
+#      if date_1[0]>date_2[0] and date_1[1]>date_2[1] or date_1[0]>date_2[0] and date_1[2]>date_2[2]:
+#           n_days+=((date_2[0]-1)-date_1[0])*YEAR
+#           print(n_days)
+#      elif date_1[0]<=date_2[0]:
+#           n_days+=(date_2[0]-date_1[0])*YEAR
      
-     return n_dias
+#      return n_days
      
-check_dt(d1,d2)
-print(diff_days(d1,d2))
+# check_dt(date_1,date_2)
+# print(diff_days(date_1,date_2))
 
 # Tarefa : diferença de dias entre datas
 

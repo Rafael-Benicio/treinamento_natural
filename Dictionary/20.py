@@ -1,10 +1,10 @@
-lis=[{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
+list_dicts=[{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
 
-out=set()
 
-for i in lis:
-     out.add(list(i.values())[0])
-print(out)
+
+output_set={list(dic.values())[0] for dic in list_dicts}
+     
+print(output_set)
 
 # Tarefa : Obter uma lista não repetida dos valores nos dicionarios dentro da lista
 

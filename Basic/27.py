@@ -1,11 +1,10 @@
+def list_to_string(lista) :
 
-def concatena_lista_para_string(lista) :
+     text="".join([str(value) for value in lista])
 
-     tx="".join([str(n) for n in lista])
+     return text
 
-     return tx
-
-print(concatena_lista_para_string([1,2,3,4,5,6,7]))
+print(list_to_string([1,2,3,4,5,6,7]))
 
 # Tarefa : Converter uma lista de valores em uma string
 

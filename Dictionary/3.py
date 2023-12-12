@@ -2,12 +2,19 @@ dic1={1:10, 2:20}
 dic2={3:30, 4:40}
 dic3={5:50,6:60}
 
-dic4={}
+# Fazendo o uso do operdor de União
 
-for i in (dic1,dic2,dic3):
-     dic4.update(i)
+dic4=dic1|dic2|dic3
 
 print(dic4)
+
+# -------------------------------------
+# dic4={}
+
+# for i in (dic1,dic2,dic3):
+#      dic4.update(i)
+
+# print(dic4)
 
 # Tarefa : Concatena os dicinarios 1,2 e 3 e criar um novo
 

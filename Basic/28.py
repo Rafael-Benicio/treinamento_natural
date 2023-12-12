@@ -5,12 +5,18 @@ numbers = [
     958,743, 527
     ]
 
-for i in numbers:
-     if i==237:
-          print(i)
-          break
-     elif (i%2==0):
-          print(i)
+# Usando List Comprehension
+
+[print(i) for i in numbers[:numbers.index(237)] if (i%2==0)]
+
+# ------------------------------------
+
+# for i in numbers:
+#      if i==237:
+#           print(i)
+#           break
+#      elif (i%2==0):
+#           print(i)
 
 # Tarefa : Imprimir todos os numeros pares na lista desde o inicio até o valor 237
 

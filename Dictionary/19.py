@@ -1,14 +1,23 @@
-d1 = {'a': 100, 'b': 200, 'c':300}
-d2 = {'a': 300, 'b': 200, 'd':400}
+from collections import Counter
 
-d3=d1.copy()
-d3.update(d2)
+dict_1 = {'a': 100, 'b': 200, 'c':300}
+dict_2 = {'a': 300, 'b': 200, 'd':400}
 
-for i in d1:
-     if i in d2:
-          d3[i]=d2[i]+d1[i]
+# Usando Counter
 
-print(d3)
+dict_3=Counter(dict_1)+Counter(dict_2)
+
+print(dict_3)
+
+# --------------------------------------
+# dict_3=dict_1.copy()
+# dict_3.update(dict_2)
+
+# for key in dict_1:
+#      if key in dict_2:
+#           dict_3[key] = dict_2[key] + dict_1[key]
+
+# print(dict_3)
 
 # Tarefa : Combinar dois dicionarios e somar os valores que eles tem chaves em comum
 
