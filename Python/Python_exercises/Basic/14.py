@@ -9,7 +9,7 @@ date_2=(2014, 7, 5)
 
 days_dif = date(2014, 7, 5) - date(2014, 7, 2)
 
-print(days_dif)
+print(f'{days_dif.days} days')
 
 # Aqui basicamente checa se a dt2 é posterior a dt1
 # def check_dt(date_1,date_2):
