@@ -2,14 +2,14 @@
 
 ### Exercícios Basicos
  
-**Exercicio 3** : Escreva um programa Python para mostrar a data e hora atual
+[**Exercicio 3**](./Python_exercises/Basic/3.py) : Escreva um programa Python para mostrar a data e hora atual
 
 Exemplo de saida :
 ~~~
 2014-07-05 14:34:14
 ~~~
 ---
-**Exercicio 6**  : Escreva um programa Python que aceita uma sequancia de numeros separados por virgulas e gera uma lista e uma tupla apartir desses numeros
+[**Exercicio 6**](./Python_exercises/Basic/6.py)  : Escreva um programa Python que aceita uma sequancia de numeros separados por virgulas e gera uma lista e uma tupla apartir desses numeros
 
 Exemplo de Entrada : 
 ~~~
@@ -21,7 +21,7 @@ List : ['3', ' 5', ' 7', ' 23']
 Tuple : ('3', ' 5', ' 7', ' 23')
 ~~~
 ---
-**Exercicio 14** : Escreva um programa Python para calcular o numero de dias entre duas datas
+[**Exercicio 14**](./Python_exercises/Basic/14.py): Escreva um programa Python para calcular o numero de dias entre duas datas
 
 Exemplo de datas : 
 ~~~
@@ -32,7 +32,7 @@ Saida :
 9 days
 ~~~
 ---
-**Exercicio 25** : Escreva um programa Python que checa se um valor especificado está contido dentro de um grupo de valores
+[**Exercicio 25**](./Python_exercises/Basic/25.py): Escreva um programa Python que checa se um valor especificado está contido dentro de um grupo de valores
 
 Dados :
 ~~~
@@ -46,7 +46,7 @@ True
 False
 ~~~
 ---
-**Exercicio 27** : Escreva um programa Python que concatena todos os elementos de uma lista dentro de uma string e retorna ela
+[**Exercicio 27**](./Python_exercises/Basic/27.py): Escreva um programa Python que concatena todos os elementos de uma lista dentro de uma string e retorna ela
 
 Dado :
 ~~~
@@ -57,7 +57,7 @@ Saida :
 15122
 ~~~
 ---
-**Exercicio 28** : Escreva um programa Python que emprime todos os valores pares de uma dada lista na lista e para a impressão depois de imprimir o valor 237 na sequencia
+[**Exercicio 28**](./Python_exercises/Basic/28.py): Escreva um programa Python que emprime todos os valores pares de uma dada lista na lista e para a impressão depois de imprimir o valor 237 na sequencia
 
 Exemplo de lista de numeros :
 ~~~
@@ -85,7 +85,7 @@ Saida :
 237 
 ~~~
 ---
-**Exercicio 29** : Escreva um programa Python que imprime todas as cores da ´´´color_list_1´´´ que não estão presente na ´´´color_list_2´´´
+[**Exercicio 29**](./Python_exercises/Basic/29.py): Escreva um programa Python que imprime todas as cores da ´´´color_list_1´´´ que não estão presente na ´´´color_list_2´´´
 
 Dados de Teste :
 ~~~
@@ -97,17 +97,17 @@ Saida esperada :
 {'Black', 'White'}
 ~~~
 ---
-**Exercicio 73** : Escreve um programa Python para calcular um ponto médio de uma linha
+[**Exercicio 73**](./Python_exercises/Basic/73.py): Escreve um programa Python para calcular um ponto médio de uma linha
 
 ---
-**Exercicio 75** : Escreva um programa Python para obter as informações de copyright no codigo Python
+[**Exercicio 75**](./Python_exercises/Basic/75.py): Escreva um programa Python para obter as informações de copyright no codigo Python
 
 ---
-**Exercicio 90** : Escreva um programa Python para que faz uma copia do proprio código
+[**Exercicio 90**](./Python_exercises/Basic/90.py): Escreva um programa Python para que faz uma copia do proprio código
 
 ### Exercícios Dicionário
 
-**Exercício 3** : Escreva um script Python que concatene os dicionarios a seguir e crie um novo
+[**Exercicio 3**](./Python_exercises/Dictionary/3.py): Escreva um script Python que concatene os dicionarios a seguir e crie um novo
 
 Dicionários :
 ~~~
@@ -121,7 +121,7 @@ Resultado Esperado :
 {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
 ~~~
 ---
-**Exercício 7** : Escreva um script Python para imprimir um dicionário, onde as chaves são numeros entre 1 e 15 (ambos inclusos) e os valores são o quadrado da chave
+[**Exercicio 7**](./Python_exercises/Dictionary/7.py): Escreva um script Python para imprimir um dicionário, onde as chaves são numeros entre 1 e 15 (ambos inclusos) e os valores são o quadrado da chave
 
 Exemplo de Saida :
 ~~~
@@ -129,7 +129,7 @@ Exemplo de Saida :
 ~~~
 
 ---
-**Exercício 19** : Escreva um programa que combine dois dicionários e some os valores que tem chaves em comum
+[**Exercicio 19**](./Python_exercises/Dictionary/19.py): Escreva um programa que combine dois dicionários e some os valores que tem chaves em comum
 
 Dados :
 ~~~
@@ -142,7 +142,7 @@ Saida :
 Counter({'a': 400, 'b': 400, 'd': 400, 'c': 300})
 ~~~
 ---
-**Exercício 20** : Escreva um programa que imprime todos os valores distintos no dicionário:
+[**Exercicio 20**](./Python_exercises/Dictionary/20.py): Escreva um programa que imprime todos os valores distintos no dicionário:
 
 Dados :
 ~~~
@@ -153,7 +153,7 @@ Saida esperada :
 {'S005', 'S002', 'S007', 'S001', 'S009'}
 ~~~
 ---
-**Exercício 30** : Escreva um programa para pegar os três maiores valores de itens numa loja
+[**Exercicio 30**](./Python_exercises/Dictionary/30.py): Escreva um programa para pegar os três maiores valores de itens numa loja
 
 Dados :
 ~~~
@@ -166,7 +166,7 @@ item1 45.5
 item3 41.3
 ~~~
 ---
-**Exercício 38** : Escreva um programa que compara os valores das chaves em dois dicionários
+[**Exercicio 38**](./Python_exercises/Dictionary/38.py): Escreva um programa que compara os valores das chaves em dois dicionários
 
 Dados : 
 ~~~
@@ -177,7 +177,7 @@ Saida :
 key1: 1 está presente  em  dict_1 e dict_2
 ~~~
 ---
-**Exercício 46** : Escreva um programa para criar um dicionário que agrupe as sequências de pares chave-valor em um dicionario de listas:
+[**Exercicio 46**](./Python_exercises/Dictionary/46.py): Escreva um programa para criar um dicionário que agrupe as sequências de pares chave-valor em um dicionario de listas:
 
 Lista Original:
 ~~~
