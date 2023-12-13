@@ -1,4 +1,4 @@
-[**Lista de Exercícios Python**](./Python/Python_exercises/Dictionary/3.py)
+[**Lista de Exercícios Python**](./Python/exercises_list.md)
 
 
 [**Anotações De Git**](./Git/Git.md)
