@@ -188,3 +188,55 @@ Saida Esperada:
 {'yellow': [1, 3], 'blue': [2, 4], 'red': [1]}
 ~~~
 ---
+
+### Exercícios Datetime
+
+[**Exercicio 3**](./Python_exercises/Datetime/3.py): Escreva um programa Python que converta uma string pra um datetime
+
+[**Exercicio 5**](./Python_exercises/Datetime/5.py): Escreva um programa Python para subtrair cinco dias do dia atual
+
+Dado:
+~~~
+Current Date : 2015-06-22
+~~~
+Saida Esperada:
+~~~
+5 days before Current Date : 2015-06-17
+~~~
+
+[**Exercicio 8**](./Python_exercises/Datetime/8.py): Escreva um programa Python para converter uma data para um datetime (a meia noite daquela data) 
+
+Exemplo de saida
+~~~
+2015-06-22 00:00:00
+~~~
+
+[**Exercicio 14**](./Python_exercises/Datetime/14.py): Escreva um programa Python para encontrar a data da primeira segunda-feira de uma dada semana
+
+Dado : 
+~~~
+2015, 50
+~~~
+Saida :
+~~~
+Mon Dec 14 00:00:00 2015
+~~~
+
+[**Exercicio 18**](./Python_exercises/Datetime/18.py): Escreva um programa Python para pegar o numero de dias entre duas datas
+
+Exemplo de datas
+~~~
+2000,2,28
+2001,2,28
+~~~
+Saida Experada
+~~~
+366 days, 0:00:00
+~~~
+
+[**Exercicio 19**](./Python_exercises/Datetime/19.py): Escreva um programa Python para pegar a data da ultima terça-feira
+
+[**Exercicio 39**](./Python_exercises/Datetime/39.py): Escreva um programa para calcular a idade de uma passoa em anos
+
+[**Exercicio 50**](./Python_exercises/Datetime/50.py): Escreva um programa python para pegar uma lista de datas entre duas datas 
+
