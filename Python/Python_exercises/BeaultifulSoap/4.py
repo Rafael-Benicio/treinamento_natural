@@ -18,10 +18,9 @@ HTML_IN_PLAIN_TEXT = """
 </html>
 """
 
-def get_text_from_tags(document:BeautifulSoup,tag:str()) -> list[str]:
-     return [tag.text for tag in document.find_all(tag)]
-
-
 if __name__=='__main__':
      bs_html=BeautifulSoup(HTML_IN_PLAIN_TEXT, "html.parser")
-     print(get_text_from_tags(bs_html,'p'))
+
+     fst_tag_p_text= bs_html.find('p')
+
+     print(fst_tag_p_text)
