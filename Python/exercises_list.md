@@ -240,3 +240,22 @@ Saida Experada
 
 [**Exercicio 50**](./Python_exercises/Datetime/50.py): Escreva um programa python para pegar uma lista de datas entre duas datas 
 
+---
+### Exercícios BeautifulSoap
+
+[**Exercicio 2**](./Python_exercises/BeaultifulSoap/2.py): Escreva um programa para pegar todas as tags `<p>` de um documento html
+ 
+---
+[**Exercicio 3**](./Python_exercises/BeaultifulSoap/3.py): Escreva um programa para pegar o numero de tags `<p>` presentes no documento html
+
+---
+[**Exercicio 4**](./Python_exercises/BeaultifulSoap/4.py): Escreva um programa para extrair o texto na primeira tag `<p>` de um documento html
+
+---
+[**Exercicio 8**](./Python_exercises/BeaultifulSoap/8.py): Escreva um programa para extrair todas as URLs da pagina python.org que estão dentro de tag `<li>`
+
+---
+[**Exercicio 19**](./Python_exercises/BeaultifulSoap/19.py): Escreva um programa para imprimir o(s) elemento(s) que tem um determinado id em uma pagina web
+
+---
+
