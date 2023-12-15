@@ -1,6 +1,6 @@
 # Exercícios 
 
-### Exercícios Basicos
+## Exercícios Basicos
  
 [**Exercicio 3**](./Python_exercises/Basic/3.py) : Escreva um programa Python para mostrar a data e hora atual
 
@@ -105,7 +105,7 @@ Saida esperada :
 ---
 [**Exercicio 90**](./Python_exercises/Basic/90.py): Escreva um programa Python para que faz uma copia do proprio código
 
-### Exercícios Dicionário
+## Exercícios Dicionário
 
 [**Exercicio 3**](./Python_exercises/Dictionary/3.py): Escreva um script Python que concatene os dicionarios a seguir e crie um novo
 
@@ -189,7 +189,7 @@ Saida Esperada:
 ~~~
 ---
 
-### Exercícios Datetime
+## Exercícios Datetime
 
 [**Exercicio 3**](./Python_exercises/Datetime/3.py): Escreva um programa Python que converta uma string pra um datetime
 
@@ -241,7 +241,7 @@ Saida Experada
 [**Exercicio 50**](./Python_exercises/Datetime/50.py): Escreva um programa python para pegar uma lista de datas entre duas datas 
 
 ---
-### Exercícios BeautifulSoap
+## Exercícios BeautifulSoap
 
 [**Exercicio 2**](./Python_exercises/BeaultifulSoap/2.py): Escreva um programa para pegar todas as tags `<p>` de um documento html
  
