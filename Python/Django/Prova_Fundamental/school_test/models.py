@@ -13,27 +13,11 @@ class Question(models.Model):
      op2=models.CharField(max_length=500,null=False)
      op3=models.CharField(max_length=500,null=False)
      op4=models.CharField(max_length=500,null=False)
-     answer=models.IntegerField(null=False)
-     def __str__(self):
-        return self.question_text
-
-# Prova(Id_Prova, Nome_Prova ,Materia)
-class ReadyTest(models.Model):
-     test_name=models.CharField(max_length=200,null=False)
-     subject=models.CharField(max_length=10,null=False)
-     test_descripition=models.CharField(max_length=500)
-
-     def __str__(self):
-        return self.test_name
-        
-
-class TestQuestions(models.Model):
-     id_question=models.ForeignKey(Question, on_delete=models.CASCADE)
-     id_test=models.ForeignKey(ReadyTest, on_delete=models.CASCADE)
      question_subject=models.CharField(max_length=10,null=False)
      difficulty_level=models.IntegerField(null=False)
+     answer=models.IntegerField(null=False)
      def __str__(self):
-        return f"{self.question_subject} | Dificuldade {self.difficulty_level}"
+        return f"{self.question_text} | {self.question_subject} |Dif {self.difficulty_level}"
 
 # Aluno (Id_Aluno,Nome_Aluno, Sobrenome_Aluno,Senha, Id_Classe)
 class Student(models.Model):
@@ -43,16 +27,35 @@ class Student(models.Model):
      def __str__(self):
         return f"Aluno : {self.first_name} {self.last_name}"
 
+# Prova(Id_Prova, Nome_Prova ,Materia)
+class ReadyTest(models.Model):
+     test_name=models.CharField(max_length=200,null=False)
+     subject=models.CharField(max_length=10,null=False)
+     test_descripition=models.CharField(max_length=500)
+     def __str__(self):
+        return f"Prova : {self.test_name}"
+        
+class TestQuestions(models.Model):
+     id_question=models.ForeignKey(Question, on_delete=models.CASCADE)
+     id_test=models.ForeignKey(ReadyTest, on_delete=models.CASCADE)
+     def __str__(self):
+        return f"Questão : {self.id_question} → {self.id_test}"
+
+
 # Classes (Id_Classe, Id_Aluno ,Ano, Turma )
 class StudentClass (models.Model):
      id_student=models.ForeignKey(Student,on_delete=models.CASCADE)
      year=models.IntegerField(null=False)
      class_group=models.IntegerField(null=False)
+     def __str__(self):
+          return f"{self.id_student} | Classe : {self.year}.{self.class_group}"
 
 # ParaFazer(Id_Aluno, Id_Prova)
 class TestToDo(models.Model):
      id_student=models.ForeignKey(Student,on_delete=models.CASCADE)
      id_test=models.ForeignKey(ReadyTest,on_delete=models.CASCADE)
+     def __str__(self):
+        return f"{self.id_student} → {self.id_test}"
 
 
 
