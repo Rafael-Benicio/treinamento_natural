@@ -1,0 +1,9 @@
+<form action="{% url 'school_test:validate' %}" method="post">
+     {% csrf_token %}
+     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+     <label for="id_student">Id de Estudante: </label>
+     <input id="id_student" type="text" name="id_student" value="{{ current_name }}">
+     <label for="password">Senha: </label>
+     <input id="password" type="password" name="password" value="{{ current_name }}">
+     <input type="submit" value="OK">
+ </form>
