@@ -23,6 +23,7 @@ def user_login_validate(request):
 
 def home(request, id_student):
      student_tests=TestToDo.objects.filter(id_student=id_student)
-     tests=[ ReadyTest.objects.get(id=student_test.id_test) for student_test in student_tests]
+     tests=[ ReadyTest.objects.get(id=student_test.id_test.id) for student_test in student_tests]
+     # tests=[ print(student_test.id_test.id) for student_test in student_tests]
      context = {"student_tests": tests}
      return render(request, "school_test/home.html",context)
