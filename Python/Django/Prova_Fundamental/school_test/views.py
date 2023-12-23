@@ -24,26 +24,30 @@ def user_login_validate(request):
 def home(request, id_student):
      student_tests=TestToDo.objects.filter(id_student=id_student)
      tests=[ ReadyTest.objects.get(id=student_test.id_test.id) for student_test in student_tests]
-     # tests=[ print(student_test.id_test.id) for student_test in student_tests]
+     [print(test) for test in tests ]
      context = {"student_tests": tests}
      return render(request, "school_test/home.html",context)
 
 def student_test(request, id_student,id_test):
-     test_inf=ReadyTest.objects.get(id=int(id_test))
-     test_questions=TestQuestions.objects.filter(id_test=id_test)
-     questions_from_test=[Question.objects.get(id=question_id.id) for question_id in test_questions]
-     # [print(question_id) for question_id in test_questions]
-     test={'name':test_inf.test_name}
+     questions=[]
+     student_test=ReadyTest.objects.get(id=int(id_test))
+
+     id_from_question_and_readytest=TestQuestions.objects.filter(id_test=id_test)
+     for testquestion_object in id_from_question_and_readytest:
+          questions.append(Question.objects.get(id=testquestion_object.id_question.id))
+
+     test={'name':student_test.test_name, }
      test['id_student']=id_student
-     test['subject']=test_inf.subject
-     test['questions']=questions_from_test
+     test['subject']=student_test.subject
+     test['questions']=questions
+
      context = {"test": test}
+
      # {name=test.name}
      return render(request, "school_test/test.html",context)
 
 def result_calculate(request):
      grade=calculate_test_grade(remove_identification_data(request.POST))
-
      return HttpResponseRedirect(reverse("school_test:home",args=(request.POST["id_student"],)))
 
 def calculate_test_grade(id_question_and_choice:dict)-> float:
