@@ -55,7 +55,7 @@ class TestToDo(models.Model):
      id_student=models.ForeignKey(Student,on_delete=models.CASCADE)
      id_test=models.ForeignKey(ReadyTest,on_delete=models.CASCADE)
      was_done=models.BooleanField(null=False,default=False)
-     grade=models.IntegerField(null=False,default=0)
+     grade=models.FloatField(null=False,default=0)
      def __str__(self):
         return f"{self.id_student} → {self.id_test}"
 
