@@ -4,7 +4,7 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
 {% if student_tests %}
      <ul>
           {% for test in student_tests %}
-               <li>{{ test.test_name }}</li>
+               <li><a href="prova/{{test.id}}" >{{ test.test_name }}<a></li>
           {% endfor %}
      </ul>
  {% else %}

@@ -1,0 +1,27 @@
+<h1>{{test.name}}</h1>
+<h3>{{test.subject}}</h3>
+<form action="{% url 'school_test:--' %}" method="post" >
+{% for question in test.questions %}
+     <hr>
+     <legend>{{question.question_text}}</legend>
+     </fieldset>
+          <p>
+               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op1}}" />
+               <label for="opt1">{{question.op1}}</label>
+          </p>
+          <p>
+               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op2}}" />
+               <label for="opt2">{{question.op2}}</label>
+          </p>
+          <p>
+               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op3}}" />
+               <label for="opt3">{{question.op3}}</label>
+          </p>
+          <p>
+               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op4}}" />
+               <label for="opt4">{{question.op4}}</label>
+          </p>
+     </fieldset>
+{% endfor %}
+<input type="submit" value="Concluir">
+</form>
