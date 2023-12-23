@@ -9,13 +9,16 @@ def index(request):
      return render(request, "school_test/index.html")
 
 def user_login_validate(request):
+     id_student=request.POST["id_student"]
      try:
-          student_entity = Student.objects.get(id=int(request.POST["id_student"]))
+          student_entity = Student.objects.get(id=int(id_student))
+          if student_entity.password != request.POST['password']:
+               raise "Wrong Password"
      except:
           return render(request,"school_test/index.html",{"error_message": "Seu Id ou Senha estão errados",},)
      else:
-          if student_entity.password == request.POST['password']:
-               return HttpResponseRedirect(reverse("school_test:home",args=(id_student,)))
+          return HttpResponseRedirect(reverse("school_test:home",args=(id_student,)))
+
 
 
 def home(request, id_student):
