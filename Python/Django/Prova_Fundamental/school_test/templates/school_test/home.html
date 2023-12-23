@@ -2,11 +2,19 @@
 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 {% if student_tests %}
-     <ul>
+     <table>
           {% for test in student_tests %}
-               <li><a href="prova/{{test.id}}" >{{ test.test_name }}<a></li>
+               <tr>
+                    {% if test.was_done %}
+                         <td>{{ test.test_name }}</td>
+                         <td>{{test.grade}}</td>
+                    {% else %}
+                         <td><a href="prova/{{test.id}}" >{{ test.test_name }}<a></td>
+                         <td> Não feito </td>
+                    {% endif %}
+               <tr>
           {% endfor %}
-     </ul>
+     </table>
  {% else %}
      <p>Não há testes para serem feitos.</p>
  {% endif %}

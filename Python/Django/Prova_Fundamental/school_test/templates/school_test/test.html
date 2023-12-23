@@ -2,6 +2,7 @@
 <h3>{{test.subject}}</h3>
 <form action="{% url 'school_test:result' %}" method="post" >
 <input type="hidden" id="id_studet" name="id_student" value="{{test.id_student}}">
+<input type="hidden" id="id_test" name="id_test" value="{{test.id_test}}">
 {% csrf_token %}
 {% for question in test.questions %}
      <hr>
