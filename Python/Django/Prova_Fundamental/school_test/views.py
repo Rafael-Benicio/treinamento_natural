@@ -15,7 +15,7 @@ def user_login_validate(request):
           if student_entity.password != request.POST['password']:
                raise "Wrong Password"
      except:
-          return render(request,"school_test/index.html",{"error_message": "Seu Id ou Senha estão errados",},)
+          return render(request,"school_test/index.html",{"error_message": "Seu Id ou Senha estão errados","current_id":request.POST["id_student"],"current_password":request.POST["password"]})
      else:
           return HttpResponseRedirect(reverse("school_test:home",args=(id_student,)))
 
@@ -42,7 +42,8 @@ def student_test(request, id_student,id_test):
      return render(request, "school_test/test.html",context)
 
 def result_calculate(request):
-     calculate_test_grade(remove_identification_data(request.POST))
+     grade=calculate_test_grade(remove_identification_data(request.POST))
+
      return HttpResponseRedirect(reverse("school_test:home",args=(request.POST["id_student"],)))
 
 def calculate_test_grade(id_question_and_choice:dict)-> float:

@@ -2,8 +2,8 @@
      {% csrf_token %}
      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
      <label for="id_student">Id de Estudante: </label>
-     <input id="id_student" type="text" name="id_student" value="{{ current_name }}">
+     <input id="id_student" type="text" name="id_student" value="{{current_id}}">
      <label for="password">Senha: </label>
-     <input id="password" type="password" name="password" value="{{ current_name }}">
+     <input id="password" type="password" name="password" value="{{current_password}}">
      <input type="submit" value="OK">
  </form>
