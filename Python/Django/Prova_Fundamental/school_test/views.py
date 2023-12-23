@@ -40,4 +40,22 @@ def student_test(request, id_student,id_test):
      context = {"test": test}
      # {name=test.name}
      return render(request, "school_test/test.html",context)
+
+def result_calculate(request):
+     calculate_test_grade(remove_identification_data(request.POST))
+     return HttpResponseRedirect(reverse("school_test:home",args=(request.POST["id_student"],)))
+
+def calculate_test_grade(id_question_and_choice:dict)-> float:
+     weight=10/len(id_question_and_choice)
+     right_answers=0
+
+     for id_question in id_question_and_choice: 
+          asw=Question.objects.get(id=id_question).answer
+          if asw==int(id_question_and_choice[id_question]):
+               right_answers+=1
      
+     return right_answers*weight
+
+def remove_identification_data(test_form:dict)->dict:
+     return {field_name:test_form[field_name] for field_name in test_form if field_name!='id_student' and field_name!='csrfmiddlewaretoken'}
+    

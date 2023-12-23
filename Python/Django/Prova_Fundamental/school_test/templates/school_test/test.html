@@ -1,24 +1,26 @@
 <h1>{{test.name}}</h1>
 <h3>{{test.subject}}</h3>
-<form action="{% url 'school_test:--' %}" method="post" >
+<form action="{% url 'school_test:result' %}" method="post" >
+<input type="hidden" id="id_studet" name="id_student" value="{{test.id_student}}">
+{% csrf_token %}
 {% for question in test.questions %}
      <hr>
      <legend>{{question.question_text}}</legend>
      </fieldset>
           <p>
-               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op1}}" />
+               <input type="radio" name="{{question.id}}" id="question{{ forloop.counter }}" value="1"/>
                <label for="opt1">{{question.op1}}</label>
           </p>
           <p>
-               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op2}}" />
+               <input type="radio" name="{{question.id}}" id="question{{ forloop.counter }}" value="2"/>
                <label for="opt2">{{question.op2}}</label>
           </p>
           <p>
-               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op3}}" />
+               <input type="radio" name="{{question.id}}" id="question{{ forloop.counter }}" value="3"/>
                <label for="opt3">{{question.op3}}</label>
           </p>
           <p>
-               <input type="radio" name="{{forloop.counter}}" id="question{{ forloop.counter }}" value="{{question.op4}}" />
+               <input type="radio" name="{{question.id}}" id="question{{ forloop.counter }}" value="4"/>
                <label for="opt4">{{question.op4}}</label>
           </p>
      </fieldset>
