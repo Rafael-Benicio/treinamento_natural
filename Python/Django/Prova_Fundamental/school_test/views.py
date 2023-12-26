@@ -46,9 +46,10 @@ def calculate_test_grade(id_question_and_choice:dict)-> float:
 
 def regist_student_test_grade(test_form:dict,grade:float)->None:
      student_test=TestToDo.objects.get(id_test=int(test_form["id_test"]), id_student=int(test_form["id_student"]))
-     student_test.grade=grade
-     student_test.was_done=True
-     student_test.save()
+     if not (student_test.was_done):
+          student_test.grade=grade
+          student_test.was_done=True
+          student_test.save()
 
 def remove_identification_data(test_form:dict)->dict:
      return {field_name:test_form[field_name] for field_name in test_form if field_name!='id_student' and field_name!='csrfmiddlewaretoken' and field_name!='id_test'}
@@ -71,7 +72,7 @@ def build_list_of_tests(id_student:int)-> list[dict]:
 def build_student_test(id_student:int,id_test:int)->dict:
      questions=[]
      student_test=ReadyTest.objects.get(id=int(id_test))
-     test_was_done=TestToDo.objects.get(id_test=int(id_test), id_student=int(id_student)).was_done
+
      id_from_question_and_readytest=TestQuestions.objects.filter(id_test=id_test)
      for testquestion_object in id_from_question_and_readytest:
           questions.append(Question.objects.get(id=testquestion_object.id_question.id))
@@ -81,5 +82,4 @@ def build_student_test(id_student:int,id_test:int)->dict:
      test['id_test']=id_test
      test['subject']=student_test.subject
      test['questions']=questions
-     test['was_done']=test_was_done
      return test
