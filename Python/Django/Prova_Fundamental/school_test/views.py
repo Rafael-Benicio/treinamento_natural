@@ -9,10 +9,12 @@ def index(request):
      return render(request, "school_test/index.html")
 
 def user_login_validate(request):
+     ph = PasswordHasher()
      id_student=request.POST["id_student"]
      try:
           student_entity = Student.objects.get(id=int(id_student))
-          if student_entity.password != request.POST['password']:
+          # if student_entity.password != request.POST['password']:
+          if not (ph.verify(student_entity.password, request.POST['password'])):
                raise "Wrong Password"
      except:
           return render(request,"school_test/index.html",{"error_message": "Seu Id ou Senha estão errados","current_id":request.POST["id_student"],"current_password":request.POST["password"]})

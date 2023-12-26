@@ -1,6 +1,8 @@
-from django.db import models
+from argon2 import PasswordHasher
 import datetime
+from django.db import models
 from django.utils.timezone import now
+from django.db.models.signals import pre_save
 
 
 # Create your models here.
@@ -60,5 +62,13 @@ class TestToDo(models.Model):
         return f"{self.id_student} → {self.id_test}"
 
 
+def make_password_hasher(sender, instance, **kwargs):
+    if not instance.id:
+          ph = PasswordHasher()
+          hash = ph.hash(instance.password)
+          instance.password=hash
+          # instance.seu_campo_hasheado = hashlib.sha256(instance.seu_campo.encode()).hexdigest()
 
+# Conecta a função ao sinal pre_save do SeuModelo
+pre_save.connect(make_password_hasher, sender=Student)
 
