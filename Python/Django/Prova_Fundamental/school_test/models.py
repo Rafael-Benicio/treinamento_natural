@@ -63,12 +63,17 @@ class TestToDo(models.Model):
 
 
 def make_password_hasher(sender, instance, **kwargs):
-    if not instance.id:
-          ph = PasswordHasher()
+     ph = PasswordHasher()
+     if not instance.id:
           hash = ph.hash(instance.password)
           instance.password=hash
-          # instance.seu_campo_hasheado = hashlib.sha256(instance.seu_campo.encode()).hexdigest()
+     else:
+          current_instance = sender.objects.get(id=instance.id)
+          if current_instance.password != instance.password:
+               hash = ph.hash(instance.password)
+               instance.password=hash
 
-# Conecta a função ao sinal pre_save do SeuModelo
+
+# Conecta a função ao sinal pre_save
 pre_save.connect(make_password_hasher, sender=Student)
 
