@@ -24,16 +24,33 @@ def user_login_validate(request)->HttpResponse:
           return response
 
 def home(request)->HttpResponse:
-     id_student= int(request.COOKIES['id_student_cookie'])
-     context = {"student_tests": build_list_of_tests(id_student)}
-     return render(request, "school_test/home.html",context)
+     try:
+          id_student= int(request.COOKIES['id_student_cookie'])
+     except KeyError as err:
+          print(f' Erro, Cookie : {err} not finded')
+          return HttpResponseRedirect(reverse("school_test:login",))
+     else:
+          context = {"student_tests": build_list_of_tests(id_student)}
+          return render(request,"school_test/home.html",context)
 
 def student_test(request,id_test:int)->HttpResponse:
-     id_student= int(request.COOKIES['id_student_cookie'])
-     context = {"test": build_student_test(id_student,id_test)}
-     return render(request, "school_test/test.html",context)
+     try:
+          id_student= int(request.COOKIES['id_student_cookie'])
+     except KeyError as err:
+          print(f' Erro, Cookie : {err} not finded')
+          return HttpResponseRedirect(reverse("school_test:login",))
+     else:
+          context = {"test": build_student_test(id_student,id_test)}
+          return render(request,"school_test/test.html",context)
+     
 
 def result_calculate(request)->HttpResponse:
      grade=calculate_test_grade(remove_identification_data(request.POST))
      regist_student_test_grade(request.POST,grade)
      return HttpResponseRedirect(reverse("school_test:home",))
+
+def user_logout(request)->HttpResponse:
+     response= HttpResponseRedirect(reverse("school_test:login",))
+     response.delete_cookie('id_student_cookie')
+     return response
+
