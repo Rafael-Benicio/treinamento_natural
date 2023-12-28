@@ -6,8 +6,8 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .models import Student
 from .module.build_and_calculate import *
 
-def index(request)->HttpResponse:
-     return render(request, "school_test/index.html")
+def login(request)->HttpResponse:
+     return render(request, "school_test/login.html")
 
 def user_login_validate(request)->HttpResponse:
      ph = PasswordHasher()
@@ -17,7 +17,7 @@ def user_login_validate(request)->HttpResponse:
           if not (ph.verify(student_entity.password, request.POST['password'])):
                raise "Wrong Password"
      except:
-          return render(request,"school_test/index.html",{"error_message": "Seu Id ou Senha estão errados","current_id":request.POST["id_student"],"current_password":request.POST["password"]})
+          return render(request,"school_test/login.html",{"error_message": "Seu Id ou Senha estão errados","current_id":request.POST["id_student"],"current_password":request.POST["password"]})
      else:
           return HttpResponseRedirect(reverse("school_test:home",args=(id_student,)))
 
