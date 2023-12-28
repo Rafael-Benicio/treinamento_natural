@@ -19,17 +19,21 @@ def user_login_validate(request)->HttpResponse:
      except:
           return render(request,"school_test/login.html",{"error_message": "Seu Id ou Senha estão errados","current_id":request.POST["id_student"],"current_password":request.POST["password"]})
      else:
-          return HttpResponseRedirect(reverse("school_test:home",args=(id_student,)))
+          response= HttpResponseRedirect(reverse("school_test:home",))
+          response.set_cookie('id_student_cookie', request.POST['id_student'])
+          return response
 
-def home(request, id_student:int)->HttpResponse:
+def home(request)->HttpResponse:
+     id_student= int(request.COOKIES['id_student_cookie'])
      context = {"student_tests": build_list_of_tests(id_student)}
      return render(request, "school_test/home.html",context)
 
-def student_test(request, id_student:int,id_test:int)->HttpResponse:
+def student_test(request,id_test:int)->HttpResponse:
+     id_student= int(request.COOKIES['id_student_cookie'])
      context = {"test": build_student_test(id_student,id_test)}
      return render(request, "school_test/test.html",context)
 
 def result_calculate(request)->HttpResponse:
      grade=calculate_test_grade(remove_identification_data(request.POST))
      regist_student_test_grade(request.POST,grade)
-     return HttpResponseRedirect(reverse("school_test:home",args=(request.POST["id_student"],)))
+     return HttpResponseRedirect(reverse("school_test:home",))
