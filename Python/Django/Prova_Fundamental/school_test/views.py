@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
 from .models import Student
-from .module.build_and_calculate import *
+from .asset.build_and_calculate import *
 
 def login(request)->HttpResponse:
      return render(request, "school_test/login.html")
