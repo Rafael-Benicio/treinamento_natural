@@ -1,4 +1,18 @@
-# Django Projeto
+# Sumario [^0]
+
+- [^0]: Sumario
+- [^1]: Django_Projeto
+- [^2]: Configuração_do_Banco_de_dados
+- [^3]: Modelos
+- [^4]: APPS
+- [^5]: Passagem_de_Argumento_por_URL
+- [^6]: Views_Genericas
+- [^7]: Test
+- [^8]: Arquivos_Estáticos
+
+# Django Projeto [^1]
+
+[^0]:Sumario
 
 Para criar um projeto/app
 ~~~
@@ -47,11 +61,15 @@ A função `path()` é passado quatro argumentos,
 >
 > `name` Serve pra nomear uma url para que ela possa ser chamada de qualquer logar no Django, em especial em templates
 
-# Configuração do Banco de dados
+# Configuração do Banco de dados [^2]
+
+[^0]:Sumario
 
 O Django usa por padrão o sqlite3 como banco de dados, mas ele pode ser alterado facilmente antes de ir pra produção modificando parametros dentro de `DATABASES.['default']`, mas especificamente `ENGINE` e `NAME`, e outros campos que devem ser criados como `USER`,`PASSWORD` e `HOSTNAME`
 
-# Modelos
+# Modelos [^3]
+
+[^0]:Sumario
 
 Os modelos são classes derivadas da classes `django.db.modeles.Model` e cada modelo possui alguns atributos de classes, os quais vão representar campos no banco de dados do modelo
 
@@ -74,7 +92,9 @@ question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
 O primeiro campo do __Field__ é preenchivel com um nome que pode possa ser legivel pra humanos, mas caso não seja preenchido, ele será definido pela maquina
 
-# APPS
+# APPS [^4]
+
+[^0]:Sumario
 
 Ainda em `settings.py`, em `INSTALLED_APPS`, haverá uma lista de aplicações presentes no projeto, que podem tanto serem empacotadas e usadas em outro projeto casa seja de seus desejo
 
@@ -87,6 +107,8 @@ python manage.py migrate
 Caso não sinta a necessidade de usar um app presente na lista, só comente ou apague a linha dele e rode a migração
 
 ## APP e Migrations
+
+[^0]:Sumario
 
 Para adicinar um App em nosso prjeto, nos temos que em `INSTALLED_APPS` adicinar o caminho ate a classe *Config dentro de apps
 ~~~
@@ -124,6 +146,8 @@ Em suma o processo se consiste em:
 - Rodar `python manage.py migrate` para aplicar suas modificações no banco de dados.
 
 ## APP shell
+
+[^0]:Sumario
 
 Podemos usar um shell interativo pra manipular o banco de dados
 
@@ -239,6 +263,8 @@ c.delete()
 
 ## APP ADMIM
 
+[^0]:Sumario
+
 Os sites tem adiminstradores que podem escrever e deletar conteudo, e o comando pra criar um adm é :
 
 ~~~bash
@@ -259,7 +285,113 @@ from .models import Question
 admin.site.register(Question)
 ```
 
-# Passagem de Argumento por Url
+### Configuração de Tabelas em Admin
+
+É possível configurar os campos na área de administrador usando
+
+~~~python
+from django.contrib import admin
+
+from .models import Question
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    fields = ["pub_date", "question_text"]
+
+
+admin.site.register(Question, QuestionAdmin)
+~~~
+
+Isso é útil pra organizar os campos na tabela de forma que seja mais simple e legivel a que está preenchendo eles, principalmente quando se tem muitos dados pra preencher
+
+~~~py
+class QuestionAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {"fields": ["question_text"]}),
+        ("Date information", {"fields": ["pub_date"]}),
+    ]
+~~~
+
+Por exemplo, usando:
+
+~~~python
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 3
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {"fields": ["question_text"]}),
+        ("Date information", {"fields": ["pub_date"], "classes": ["collapse"]}),
+    ]
+    inlines = [ChoiceInline]
+   
+admin.site.register(Question, QuestionAdmin)
+~~~
+
+É possível ligar um formulário ao outro, e definir quantos campos ele vai ter de padrão, além de uma opção de adicionar outros campos.
+
+Pra lidar com situação onde não é muito grande a tambéla, tem:
+
+~~~python
+class ChoiceInline(admin.TabularInline):
+    ...
+~~~
+
+### Personalize a listagem da página de Admin
+
+O Django de padrão usa o `__str()__` pra exibir as tabelas registradas, e o `list_display` permite exibir os valores da tabela o invez disso:
+
+~~~python
+class QuestionAdmin(admin.ModelAdmin):
+    # ...
+    list_display = ["question_text", "pub_date"]
+~~~
+
+Além disso, é possivel adicionar um filtro e dizer que parametros serão usados como filtro usando:
+
+~~~python
+class QuestionAdmin(admin.ModelAdmin):
+    # ...
+    list_filter = ["pub_date"]
+~~~
+
+Isso irá criar um filtro por data, ou adpender do tipo de campo
+
+Ou para criar um campo e busca por texto, e usa internamente uma consulta `LIKE`
+
+~~~python
+class QuestionAdmin(admin.ModelAdmin):
+    # ...
+	search_fields = ["question_text"]
+~~~
+
+### Modificar a Área de Adimin
+
+Para modificar a área de admin, é feito adicionando um valores em uma lista em `settings.py`, onde vamos configurar um template. __DIRS__ é uma lista de diretorios que o Django checa quando vai atrás dos templates:
+
+~~~python
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+~~~
+
+# Passagem de Argumento por Url [^5]
+
+[^0]:Sumario
 
 Em Urls você vai ter:
 
@@ -390,12 +522,16 @@ def detail(request, question_id):
     return render(request, "polls/detail.html", {"question": question})
 ~~~
 
-#### Get Objetct e Get List
+## Get Objetct e Get List
+
+[^0]:Sumario
 
 `get_object_or_404` : Se os dados procurados não existirem em Question, é retornando um 404
 `get_list_or_404` : funciona como get_object, com a diferença de que 'object' faz um get no banco, enquanto 'list' faz um filter
 
-### Alterando Urls
+## Alterando Urls
+
+[^0]:Sumario
 
 Ao definirmos urls, corremos o risco de ter que corrigir ou alterar elas caso algo ou um caminho no codigo mude, por isso, há meios para evitar isso, por meio das definições que fizemos no arquivo `polls.urls`
 
@@ -426,6 +562,8 @@ E no html vamos usar:
 
 ## Formulario Django
 
+[^0]:Sumario
+
 ~~~django
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
@@ -442,6 +580,8 @@ E no html vamos usar:
 ~~~
 
 ## csrf_token
+
+[^0]:Sumario
 
 O marcador abaix serve pra gerar um csrf token pra ajudar acombater esse tipo de ataque
 
@@ -493,7 +633,9 @@ def vote(request, question_id):
 - Além disso, o `HttpResponseRedirect` serve pra que ao fim da submição o usuario seja redirecionado pra evitar multiplas submições
 - O `reverse` em questão ele vai servir pra construir e direcionar o usuario pra uma nova url que vai ser construida com base nos parametros passados
 
-# Views Genericas
+# Views Genericas [^6]
+
+[^0]:Sumario
 
 O Django vai dar a possibilidade do uso de Views generica com as quais você pode abstrair todoo codigo trabalhoso anteriomente feito
 
@@ -514,7 +656,9 @@ class DetailView(generic.DetailView):
     template_name = "polls/detail.html"
 ~~~
 
- # Test
+# Test [^7]
+
+[^0]:Sumario
 
 São criados atraves de uma subclasse Django e colocados no arquivo de tests.py da aplicação
 
@@ -581,7 +725,9 @@ Boas práticas de testes incluem ter:
 - um método de teste separado para cada conjunto de condições que você quer testar
 - nomes de métodos de teste que descrevem a sua função
 
-# Arquivos Estaticos
+# Arquivos Estaticos [^8]
+
+[^0]:Sumario
 
 São arquivos como imagens, css, e JS
 
